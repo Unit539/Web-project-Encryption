@@ -27,47 +27,47 @@ class DescController extends Controller
 
             if($selector == 'AES-128'){
                 $text = $request->decryption;
-                $decryptionValue = decryption($text, env("KEY"), env("SIX_IV"));
+                $decryptionValue = decryption($text, config('key.key'), config('key.six_iv'));
             }
 
             if($selector == "BLOWFISH"){
                 $text = $request->decryption;
-                $decryptionValue = decryptionB($text, env("KEY"), env("EIGHT_IV"));
+                $decryptionValue = decryptionB($text, config('key.key'), config('key.eight_iv'));
             }
 
             if($selector == "BF"){
                 $text = $request->decryption;
-                $decryptionValue = decryptionBF($text, env("KEY"), env("EIGHT_IV"));
+                $decryptionValue = decryptionBF($text, config('key.key'), config('key.eight_iv'));
             }
 
             if($selector == "SM"){
                 $text = $request->decryption;
-                $decryptionValue = decryptionSM($text, env("KEY"), env("SIX_IV"));
+                $decryptionValue = decryptionSM($text, config('key.key'), config('key.six_iv'));
             }
 
             if($selector == "CAMELLIA-128"){
                 $text = $request->decryption;
-                $decryptionValue = decryptionC($text, env("KEY"), env("SIX_IV"));
+                $decryptionValue = decryptionC($text, config('key.key'), config('key.six_iv'));
             }
 
             if($selector == "IDEA-CBC"){
                 $text = $request->decryption;
-                $decryptionValue = decryptionI($text, env("KEY"), env("EIGHT_IV"));
+                $decryptionValue = decryptionI($text, config('key.key'), config('key.eight_iv'));
             }
 
             if($selector == "SEED-OFB"){
                 $text = $request->decryption;
-                $decryptionValue = decryptionS($text, env("KEY"), env("SIX_IV"));
+                $decryptionValue = decryptionS($text, config('key.key'), config('key.six_iv'));
             }
 
             if($selector == "CAST5-CFB"){
                 $text = $request->decryption;
-                $decryptionValue = decryptionC5($text, env("KEY"), env("EIGHT_IV"));
+                $decryptionValue = decryptionC5($text, config('key.key'), config('key.eight_iv'));
             }
 
             if($selector == "ARIA192"){
                 $text = $request->decryption;
-                $decryptionValue = decryptionAR($text, env("KEY"), env("SIX_IV"));
+                $decryptionValue = decryptionAR($text, config('key.key'), config('key.six_iv'));
             }
         }
     
