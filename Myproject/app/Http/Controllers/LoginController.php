@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
-
+require_once('.\..\app\Custom\keys.php');
 
 class LoginController extends Controller
 {
@@ -28,6 +28,9 @@ class LoginController extends Controller
 
         if(Auth::attempt($loginValid)){
             $request->session()->put('User', $request->name);
+            $request->session()->put('SecretKey', generateRandomString());
+            $request->session()->put('SixIV', generateRandomSixIv());
+            $request->session()->put('EightIV', generateRandomEightIv());
             return redirect()->intended(route('user.home'));
         }
 

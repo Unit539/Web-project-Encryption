@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 require_once (".\..\app\Custom\code.php");
 
 class HomeController extends Controller
@@ -19,47 +20,48 @@ class HomeController extends Controller
 
             if($selector == 'AES-128'){
                 $text = $request->encryption;
-                $encryptedValue = encryption($text, config('key.key'), config('key.six_iv'));
+                // $encryptedValue = encryption($text, config('key.key'), config('key.six_iv'));
+                $encryptedValue = encryption($text, Session::get("SecretKey"), Session::get("SixIV"));
             }
 
             if($selector == "BLOWFISH"){
                 $text = $request->encryption;
-                $encryptedValue = encryptionB($text, config('key.key'), config('key.eight_iv'));
+                $encryptedValue = encryptionB($text, Session::get("SecretKey"), Session::get("EightIV"));
             }
 
             if($selector == "BF"){
                 $text = $request->encryption;
-                $encryptedValue = encryptionBF($text, config('key.key'), config('key.eight_iv'));
+                $encryptedValue = encryptionBF($text, Session::get("SecretKey"), Session::get("EightIV"));
             }
 
             if($selector == "SM"){
                 $text = $request->encryption;
-                $encryptedValue = encryptionSM($text, config('key.key'), config('key.six_iv'));
+                $encryptedValue = encryptionSM($text, Session::get("SecretKey"), Session::get("SixIV"));
             }
 
             if($selector == "CAMELLIA-128"){
                 $text = $request->encryption;
-                $encryptedValue = encryptionC($text, config('key.key'), config('key.six_iv'));
+                $encryptedValue = encryptionC($text, Session::get("SecretKey"), Session::get("SixIV"));
             }
 
             if($selector == "IDEA-CBC"){
                 $text = $request->encryption;
-                $encryptedValue = encryptionI($text, config('key.key'), config('key.eight_iv'));
+                $encryptedValue = encryptionI($text, Session::get("SecretKey"), Session::get("EightIV"));
             }
 
             if($selector == "SEED-OFB"){
                 $text = $request->encryption;
-                $encryptedValue = encryptionS($text, config('key.key'), config('key.six_iv'));
+                $encryptedValue = encryptionS($text, Session::get("SecretKey"), Session::get("SixIV"));
             }
 
             if($selector == "CAST5-CFB"){
                 $text = $request->encryption;
-                $encryptedValue = encryptionC5($text, config('key.key'), config('key.eight_iv'));
+                $encryptedValue = encryptionC5($text, Session::get("SecretKey"), Session::get("EightIV"));
             }
 
             if($selector == "ARIA192"){
                 $text = $request->encryption;
-                $encryptedValue = encryptionAR($text, config('key.key'), config('key.six_iv'));
+                $encryptedValue = encryptionAR($text, Session::get("SecretKey"), Session::get("SixIV"));
             }
         }
 

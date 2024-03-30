@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Contracts\Encryption\DecryptException;
+use Illuminate\Support\Facades\Session;
 require_once(".\..\app\Custom\code.php");
 
 
@@ -27,47 +28,48 @@ class DescController extends Controller
 
             if($selector == 'AES-128'){
                 $text = $request->decryption;
-                $decryptionValue = decryption($text, config('key.key'), config('key.six_iv'));
+                // $decryptionValue = decryption($text, config('key.key'), config('key.six_iv'));
+                $decryptionValue = decryption($text, Session::get("SecretKey"), Session::get("SixIV"));
             }
 
             if($selector == "BLOWFISH"){
                 $text = $request->decryption;
-                $decryptionValue = decryptionB($text, config('key.key'), config('key.eight_iv'));
+                $decryptionValue = decryptionB($text, Session::get("SecretKey"), Session::get("EightIV"));
             }
 
             if($selector == "BF"){
                 $text = $request->decryption;
-                $decryptionValue = decryptionBF($text, config('key.key'), config('key.eight_iv'));
+                $decryptionValue = decryptionBF($text, Session::get("SecretKey"), Session::get("EightIV"));
             }
 
             if($selector == "SM"){
                 $text = $request->decryption;
-                $decryptionValue = decryptionSM($text, config('key.key'), config('key.six_iv'));
+                $decryptionValue = decryptionSM($text, Session::get("SecretKey"), Session::get("SixIV"));
             }
 
             if($selector == "CAMELLIA-128"){
                 $text = $request->decryption;
-                $decryptionValue = decryptionC($text, config('key.key'), config('key.six_iv'));
+                $decryptionValue = decryptionC($text, Session::get("SecretKey"), Session::get("SixIV"));
             }
 
             if($selector == "IDEA-CBC"){
                 $text = $request->decryption;
-                $decryptionValue = decryptionI($text, config('key.key'), config('key.eight_iv'));
+                $decryptionValue = decryptionI($text, Session::get("SecretKey"), Session::get("EightIV"));
             }
 
             if($selector == "SEED-OFB"){
                 $text = $request->decryption;
-                $decryptionValue = decryptionS($text, config('key.key'), config('key.six_iv'));
+                $decryptionValue = decryptionS($text, Session::get("SecretKey"), Session::get("SixIV"));
             }
 
             if($selector == "CAST5-CFB"){
                 $text = $request->decryption;
-                $decryptionValue = decryptionC5($text, config('key.key'), config('key.eight_iv'));
+                $decryptionValue = decryptionC5($text, Session::get("SecretKey"), Session::get("EightIV"));
             }
 
             if($selector == "ARIA192"){
                 $text = $request->decryption;
-                $decryptionValue = decryptionAR($text, config('key.key'), config('key.six_iv'));
+                $decryptionValue = decryptionAR($text, Session::get("SecretKey"), Session::get("SixIV"));
             }
         }
     
